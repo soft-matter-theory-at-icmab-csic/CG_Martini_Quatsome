@@ -1,0 +1,34 @@
+!CTA Martini-FF from lipid NAMD-MARTINI tutorial
+! Values modify by Sílvia May 2018
+!
+!  S.J. Marrink et al. J. Phys. Chem. B 2007, 111, 7812-7824
+!
+! unit conversions are noted here for future reference/checking
+! 1 kJ = 0.239 kcal
+! 1 kJ/mol/nm^2 = 1*(0.239 kcal/kJ)*(1 nm/10 A)^2 = 0.00239 kcal/mol/A^2
+!
+! Bonds Section
+! 
+BONDS
+!Reference Distance: Multiply Gromacs by 10 to get Charmm (this is because
+!Gromacs works in nm and Charmm in angstroms)
+!Force Constant: Divide Gromacs by 824.8 to get Charmm (this is because of
+!a J to Cal conversion, the aforementioned factor of 10 squared, and a
+!factor of 2) 
+!
+!B1  B2  k  r0 (charmm values, ie. k in kcal/mol/A^2, R0 in A)
+! Headgroup - chain
+! Gromacs force 1250
+! chain-chain
+C1 C1 1.5155189 4.8
+!
+! Angles Section
+!Reference Angle: No conversion necessary
+!Force Constant: Divide Gromacs by 8.248 to get Charmm (J to Cal
+!conversion, and a factor of 2) 
+!
+ANGLES cos
+! Gromacs force 35 / 8.248
+! B1  B2  B3  k  theta0 cos
+! chain
+C1 C1 C1 4.2434529 180 cos

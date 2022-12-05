@@ -1,0 +1,86 @@
+!Cholesterol Martini-FF adapted to NAMD
+!
+!  Converted to NAMD from the Gromacs paper:
+!  S.J. Marrink, A.H. de Vries, T.A. Harroun, J. Katsaras, S.R. Wassall.
+!  Cholesterol shows preference for the interior of polyunsaturated lipid membranes.
+!  JACS, 130:10-11, 2008.
+!
+!  Definitions of groups in Cholesterol molecule 1-8 from figure 1 in paper
+!  S.J. Marrink et al. J. Phys. Chem. B 2007, 111, 7812-7824
+!  (group 1 is here CG1, and so on)
+!
+! unit conversions are noted here for future reference/checking
+! 1 kJ = 0.239 kcal
+! 1 kJ/mol/nm^2 = 1*(0.239 kcal/kJ)*(1 nm/10 A)^2 = 0.00239 kcal/mol/A^2
+!
+! Bonds Section
+! 
+BONDS
+!B1  B2  k  r0 (charmm values, ie. k in kcal/mol/A^2, R0 in A)
+!BOND 1 2
+SP1 SC1A 40.0 2.42 !reduced, too large k in original paper
+!BOND 2 3
+SC1A SC3A 40.0 2.60 !reduced, too large k in original paper
+! BOND 2 4
+SC1A SC1D 40.0 3.41 !reduced, too large k in original paper
+! BOND 4 6
+SC1D SC1C 40.0 2.13 !reduced, too large k in original paper
+! BOND 4 7
+SC1D C1A 40.0 5.44 !reduced, too large k in original paper
+! BOND 5 6
+SC1B SC1C 40.0 2.03 !reduced, too large k in original paper
+! BOND 6 7
+SC1C C1A 40.0 3.68 !reduced, too large k in original paper
+! BOND 7 8
+C1A C1 2.98 4.25 !Same k as in above cited papers
+!
+! Constraints Section
+!
+!A brief note concerning bonds that in Gromacs would be constrained:
+!Since one cannot easily constrain bonds in NAMD, instead we set k to a large value.
+!Ideally k should be as large as possible without causing NAMD to crash.
+!we set k=40 as the default for all constrained bonds, 
+! cholesterol frame constraint
+!  1 3
+SP1 SC3A 40.0 4.93 
+!  1 4 
+SP1 SC1D 40.0 6.04
+!  3 4 
+SC3A SC1D 40.0 2.72
+!  3 5
+SC3A SC1B 40.0 3.46
+!  4 5
+SC1D SC1B 40.0 2.94 
+!  5 7 
+SC1B C1A 40.0 4.06
+!
+! Angles Section
+!
+ANGLES cos
+! B1  B2  B3  k  theta0 cos
+! 4 7 8 angle 180.0  k= 25.0 kJ/mol = 5.975 kcal/mol
+SC1D C1A C1 5.975 180 cos
+!
+!improper Dihedrals Section
+!
+IMPROPERS
+! theta degrees, k  in kcal/mol
+!B B B B 	   k     0(ignored) phi
+!1 3 5 7
+SP1 SC3A SC1B C1A 23.90 0 0
+!1 3 5 4 
+SP1 SC3A SC1B SC1D 23.90 0 0
+!1 4 5 3
+SP1 SC1D SC1B SC3A 23.90 0 0
+!4 7 5 3
+SC1D C1A SC1B SC3A 23.90 0 0
+!3 5 7 4
+SC3A SC1B C1A SC1D 23.90 0 0
+!2 1 3 4 
+SC1A SP1 SC3A SC1D 71.70 0 -45
+!2 4 3 1
+SC1A SC1D SC3A SP1 71.70 0 45
+!6 4 5 7
+SC1C SC1D SC1B C1A 71.70 0 -45
+!6 7 5 4
+SC1C C1A SC1B SC1D 71.70 0 45

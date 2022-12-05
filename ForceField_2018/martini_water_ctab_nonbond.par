@@ -1,0 +1,43 @@
+! Last Modified 6 June 2012
+!
+! THIS FILE CONTAINS NONBONDED EXPLICIT INTERACTIONS
+! OF WATER WITH CHOLESTEROL MOLECULES
+!
+! 
+! Compatibility section: NAMD needs this part but these parameters are 
+! not used in simulation
+!
+NONBONDED
+P4 0.00 -1.195 2.35 ! DO NOT USE
+BP4 0.00 -1.195 2.35 ! DO NOT USE
+Qa 0.00 -1.195 2.35 ! DO NOT USE
+Q0 0.00 -1.195 2.35 ! DO NOT USE
+C1 0.00 -1.195 2.35 ! DO NOT USE
+!
+!V(Lennard-Jones) = Eps(i,j)*[(Rmin(i,j)/r(i,j))**12 - 2(Rmin(i,j)/r(i,j))**6]
+!
+!epsilon [kcal/mole]: Eps(i,j) = sqrt(eps(i) * eps(j))
+!Rmin/2  [A]:         Rmin(i,j) = Rmin/2(i) + Rmin/2(j)
+!
+! Section: Explicit pair atom-atom interactions
+! Extracted from file martini-all-nonb.par of NAMD tutorial for MARTINI
+!
+!
+NBFIX 
+!
+!atom atom   epsilon      Rmin/2
+!
+! WATER-WATER standard interaction
+!
+!atom atom   epsilon      Rmin/2
+P4 P4 -1.19503000 5.27557163
+BP4 BP4 -1.33843000 6.39803367
+BP4 P4 -1.33843000 6.39803367
+!
+! water- CTAB headgroup and counterion interaction
+!
+
+P4 Qa -1.33843000 5.27557163
+P4 Q0 -1.33843000 5.27557163
+BP4 Qa -1.33843000 5.27557163
+BP4 Q0 -1.33843000 5.27557163
