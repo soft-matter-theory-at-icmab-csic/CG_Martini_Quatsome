@@ -1,0 +1,16 @@
+#include "toppar/dry_martini_v2.1.itp"
+#include "toppar/dry_martini_v2.1_cholesterol.itp"
+#include "toppar/dry_martini_v2.1_cta.itp"
+#include "toppar/dry_martini_v2.1_ions.itp"
+
+[ system ]
+; name
+Martini system
+
+[ molecules ]
+; name        number
+CHOL 1182
+CTA  1182
+CHOL 872
+CTA  872
+CL-   2054
