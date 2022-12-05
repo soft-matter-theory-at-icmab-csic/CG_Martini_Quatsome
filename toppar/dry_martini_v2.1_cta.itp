@@ -1,0 +1,35 @@
+;;;;;; TOPOLOGIES FOR SURFACTANTS
+;
+; surfactants are defined here as single tail amphipatic  molecules
+;
+; currently contains: DPC, HPC, PPC, PCA, SDS, C12E5, bOG, DDM
+;
+; last updated December 4th, 2012
+
+;;;;;; CTA+ CENTRIMONIUM (without the Bromide) add by Silvia 22/08/17
+;;;;;; copy the data from PALMITOYL CARBOXYLIC ACID down below
+
+[moleculetype]
+; molname       nrexcl
+  CTA           1
+
+[atoms]
+; id    type    resnr   residu  atom    cgnr    charge
+  1     Q0      1       CTA     NC3     1       1.0
+  2     C1      1       CTA     C1      2       0
+  3     C1      1       CTA     C2      3       0
+  4     C1      1       CTA     C3      4       0
+  5     C1      1       CTA     C4      5       0
+
+[bonds]
+; i j   funct   length  force.c.
+  1 2   1       0.47    1250
+  2 3   1       0.47    1250
+  3 4   1       0.47    1250
+  4 5   1       0.47    1250
+
+[angles]
+; i j k         funct   angle   force.c.
+  1 2 3         2       180.0   25.0
+  2 3 4         2       180.0   25.0
+  3 4 5         2       180.0   25.0
